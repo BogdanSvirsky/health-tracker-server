@@ -17,6 +17,4 @@ public class User {
     public int stepGoal;
     public int waterGoal;
     public int caloriesGoal;
-
-    public long doctorId;
 }

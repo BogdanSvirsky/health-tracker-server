@@ -5,14 +5,13 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface UsersRepository extends CrudRepository<User, Long> {
-    User findById(long id);
+    @Query("SELECT u FROM User u")
+    List<User> fetchAll();
 
-    User findByUsername(String username);
-
-    List<User> getPatientsByDoctorId(long doctorId);
-
-    List<User> getAll();
+    @Query("SELECT u FROM User u WHERE username = ?1")
+    Optional<User> findByUsername(String username);
 }
